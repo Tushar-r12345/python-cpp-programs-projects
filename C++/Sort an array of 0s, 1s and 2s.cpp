@@ -9,53 +9,58 @@ void sort012(int arr[],int n)
 //traversing over the array and will increase the suitable index value
    for(int i=0;i<n;i++)
    {
-    if(arr[i]==1)
+    if(arr[i]==0)
     {
-       temp[1]++;
+       temp[0]++;
     }
-    else if(arr[i]==0)
+    else if(arr[i]==1)
     {
-        temp[0]++;
+        temp[1]++;
     }
     else
     {
         temp[2]++;
     }
    }
-   int i=0;
-   while(arr[0]>0&&i<n)
-   {
-      arr[i]=0;
-      arr[0]--;
-      i++;
-   }
+ 
+
+// storing the 0's . 1's and 2's in temp array as given 
+for(int i=0;i<n;i++){
    
-   while(arr[1]>0&&i<n)
-   {
-      arr[i]=1;
-      arr[1]--;
-      i++;
-   }
-
-   while(arr[2]>0&&i<n)
-   {
-      arr[i]=2;
-      arr[2]--;
-      i++;
-   }
-
-
-
-
-
-
+   // checking every count of 0's, 1's and 2's
+   // then putting it equal to the array (arr) created
+   // and decrementing count
+    if(temp[0]){
+        arr[i]=0;
+        temp[0]--;
+    }
+    
+    else if(temp[1]){
+        arr[i]=1;
+        temp[1]--;
+    }
+    
+    else{
+        arr[i]=2;
+        temp[2]--;
+    }
 }
-
-
-
+}
 
 
 int main()
 {
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    
+    sort012(arr,n);
+
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
     return 0;
 }
